@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
-  post '/register', to: 'auth#register'
-  post '/login', to: 'auth3login'
+  namespace :api do
+    namespace :v1 do
+      post '/register', to: 'auth#register'
+      post '/login', to: 'auth#login'
+      post '/refresh_token', to: 'auth#refresh_token'
 
-  resources :users do
-    resources :tasks
+      resources :tasks
+    end
   end
 
 end
